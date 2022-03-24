@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500&display=swap");
+
+body {
+  font-family: "Sunflower", sans-serif;
+}
+
+
 .main section{
 	display:flex;
 	border:solid 1px black;
@@ -10,6 +17,10 @@
 	border-bottom: solid 1px black;
 	width:100%;
 }
+a{
+	cursor: pointer;
+}
+
 marquee span{
     font-size: 68px;
     font-weight: bold;

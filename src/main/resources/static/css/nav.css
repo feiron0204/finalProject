@@ -98,7 +98,7 @@ nav :hover {
   display: none;
 }
 
-#third_large ul {
+ul {
   list-style: none;
 }
 
@@ -147,4 +147,25 @@ hr{
 }
 #fourth a {
   color: white;
+}
+
+#account_drop {
+    position: absolute;
+    top: 55px;
+    right: 0px;
+    background: #FFF;
+    width: 130px;
+    display: none; 
+    height: 130px;
+    overflow: hidden;
+    padding-top: 0px;
+}
+
+#account_drop ul {
+    padding: 3px 7px 10px;
+    height: 130px;
+    border: 2px solid #000;
+}
+#account_drop ul a{
+	font-size: 12px;
 }

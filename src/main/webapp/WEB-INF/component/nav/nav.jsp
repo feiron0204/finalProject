@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 첫번째 div  -->
   <div id="first" class="nav_div">
@@ -9,28 +10,42 @@
   <div id="second_large" class="nav_div">
 
 	  <div>
-	    <a href="#" >THE C SHOP</a>
+	    <a href="/" >THE C SHOP</a>
 	  </div>
 	  
 	  <div id="secondmenu">
-	    <span><a href="#">MEN</a>
+	    <span><a href="/list?category=men">MEN</a>
 	    </span>
-	    <span><a href="#">WOMEN</a>
+	    <span><a href="/list?category=women">WOMEN</a>
 	    </span>    
-	    <span><a href="#">LIFE STYLE</a>
+	    <span><a href="/list?category=lifeStyle">LIFE STYLE</a>
 	    </span>   
-	    <span><a href="#">SALE</a>
+	    <!-- <span><a href="/list?category=sale">SALE</a>
+	    </span> -->
+	    <span><a href="/brands">BRANDS</a>
 	    </span>
-	    <span><a href="#">BRANDS</a>
-	    </span>
-	    <span><a href="#">POST</a>
+	    <span><a href="/post">POST</a>
 	    </span>
 	  </div>
 	
 	  <div>
 	    <a href="#">HELP</a>
 	    <button class="search"style="border: 0; background-color: white;"><i class="fa-solid fa-magnifying-glass"></i></button>
-	    <a href="#">LOGIN</a>
+	    <c:if test="${empty sessionScope.memUser_InfoDTO}">
+	    	<a href="/login">LOGIN</a>
+	    </c:if>
+	    <c:if test="${not empty sessionScope.memUser_InfoDTO }">
+			<a class="account" id="account">ACCOUNT</a>
+		</c:if>
+		<div id="account_drop" >
+			<ul>
+				<li><a href="/account">ACCOUNT DETAIL</a></li>
+				<li><a href="">ORDER HISTORY</a></li>
+				<li><a href="/addresses">ADDRESSES</a></li>
+				<li><a href="">HELP</a></li>
+				<li><a class="logoutBtn">LOGOUT</a></li>
+			</ul>
+		</div>
 	    <button class="cart"style="border: 0; background-color: white;"><img src="https://img.icons8.com/material/24/000000/favorite-cart.png"/></button>
 	    <!-- <button id="cart"style="border: 0; background-color: white;"><img src="https://img.icons8.com/material/24/000000/clear-shopping-cart--v1.png"/></button>-->
 	  </div>
@@ -47,7 +62,7 @@
  </div>
   
   <div>
-    <a href="#" >THE C SHOP</a>
+    <a href="/" >THE C SHOP</a>
   </div>
 
   <div>
@@ -59,30 +74,45 @@
 
 <div id="third_small">
 	<div>
-		<div><a href="#">MEN</a>
+		<div><a href="/list?category=men">MEN</a>
 		</div>
-		<div><a href="#">WOMEN</a>
+		<div><a href="/list?category=women">WOMEN</a>
 		</div>    
-		<div><a href="#">LIFE STYLE</a>
+		<div><a href="/list?category=lifeStyle">LIFE STYLE</a>
 		</div>   
-		<div><a href="#">SALE</a>
+		<!-- <div><a href="/list?category=sale">SALE</a>
+		</div> -->
+		<div><a href="/brands">BRANDS</a>
 		</div>
-		<div><a href="#">BRANDS</a>
-		</div>
-		<div><a href="#">POST</a>
+		<div><a href="/post">POST</a>
 		</div>
 	</div>
 	<hr>
+	
 	<div id="small_menu">
-		<div><a href="#">LOGIN</a>
-		</div>
-		<div><a href="#">CREATE ACCOUNT</a>
-		</div>
-		<div><a href="#">ORDERS</a>
-		</div>
+	<c:if test="${empty sessionScope.memUser_InfoDTO}">
+	<div><a href="/login">LOGIN</a>
+	</div>
+	<div><a href="/join">CREATE ACCOUNT</a>
+	</div>
+	<div><a href="#">ORDERS</a>
+	</div>
+</c:if>
+<c:if test="${not empty sessionScope.memUser_InfoDTO }">
+	<div><a href="/account">ACCOUNT DETAIL</a>
+	</div>
+	<div><a href="#">ORDER HISTORY</a>
+	</div>
+	<div><a href="/addresses">ADDRESSES</a>
+	</div>	
+	<div><a class="logoutBtn">LOGOUT</a>
+	</div>
+</c:if>
 	</div>
 </div>
 <div id="fourth" class="sticky" >
-<input type="text" placeholder="SEARCH" list="options">
+<form action="/searchList" method="post" style="width:90%">
+<input name="product_name" id="keyword" type="text" placeholder="SEARCH" list="options">
+</form>
 <a href="#" id="searchCloseBtn">close</a>
 </div>
